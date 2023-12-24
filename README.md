@@ -4,3 +4,4 @@
 This script uses Javascript to extract and analyze satellite data to retrieve the dimensions of the pit and derive volume estimates.
 
 ###### This paper is currently in submission for review.
+[Jump to code here](https://github.com/jcbw/Windalco-red-mud-pit/blob/GEE_Code/Javascript)
