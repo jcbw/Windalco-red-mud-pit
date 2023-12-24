@@ -61,32 +61,6 @@ collection.evaluate(function(collection) {  // Use map on client-side.
 })
 
 
-// Calculate image statistics.
-
-var getStats = function(image) {
-  
-  var reducers = ee.Reducer.mean().combine({
-  reducer2: ee.Reducer.stdDev(),
-  sharedInputs: true
-  });
-
-  var stats1 = ee.Image(image).reduceRegion({
-    reducer: reducers,
-    geometry: geometry2,
-    scale: 10,
-    bestEffort: true
-  });
-  
-  return ee.Image(image).set(stats1);
-
-};
-
-
-var statistics = collection.map(getStats);
-
-print("statistics", statistics);
-
-
 // Get SRTM data
 
 var dataset = ee.Image('USGS/SRTMGL1_003');
@@ -150,7 +124,7 @@ var stats = img.reduceRegion({
 });
 
 // Display the dictionary of band means and SDs.
-print(stats);
+print("statistics", stats);
 
 
 
@@ -181,7 +155,7 @@ var transectLengths = lengthAdded.aggregate_array("segLength")
 print(transectLengths)
 
 
-//Get statistics
+//Get statistics for transect
 
 var sum = transectLengths.reduce(ee.Reducer.sum())
 print ('Total transect length:',sum)
